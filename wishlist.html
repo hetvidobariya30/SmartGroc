@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping / Price Compare - SmartGroc</title>
+<style>
+    body { font-family: Arial; background:#f7f7f7; margin:0; padding:0;}
+    
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration:underline;
+        
+            
+        }
+    main { max-width:900px; margin:auto; padding:30px; background:white; margin-top:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    h2 { color:#4CAF50; text-align:center; margin-bottom:20px;}
+    table { width:100%; border-collapse: collapse; margin-top:20px;}
+    th, td { border:1px solid #ddd; padding:10px; text-align:center;}
+    th { background:#4CAF50; color:white; }
+</style>
+</head>
+<body>
+ <!-- Header -->
+    <header>
+        <h1>SmartGroc</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="Dashboard.html">Dashboard</a>
+            <a href="cart.html">My Groceries</a>
+            
+            <a href="wishlist.html">Shopping</a>
+            <a href="smart-suggestions.html">Suggestions</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Logout</a>
+        </nav>
+    </header>
+
+    
+
+
+<main>
+    <h2>Compare Prices Across Stores</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Store A</th>
+                <th>Store B</th>
+                <th>Store C</th>
+                <th>Best Deal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Milk (1L)</td>
+                <td>$1.20</td>
+                <td>$1.15</td>
+                <td>$1.25</td>
+                <td>$1.15 (Store B)</td>
+            </tr>
+            <tr>
+                <td>Bread</td>
+                <td>$2.00</td>
+                <td>$1.90</td>
+                <td>$2.10</td>
+                <td>$1.90 (Store B)</td>
+            </tr>
+            <tr>
+                <td>Eggs (12 pcs)</td>
+                <td>$3.50</td>
+                <td>$3.40</td>
+                <td>$3.60</td>
+                <td>$3.40 (Store B)</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+</body>
+</html>

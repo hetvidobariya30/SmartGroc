@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - SmartGroc</title>
+<style>
+    body { font-family: Arial; margin:0; padding:0; background:#f7f7f7; }
+    header { background:#4CAF50; color:white; padding:20px; text-align:center; }
+    main { max-width:600px; margin:auto; padding:30px; background:white; margin-top:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    h2 { color:#4CAF50; text-align:center; margin-bottom:20px;}
+    form input, form textarea { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+    form button { padding:10px 20px; background:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer; }
+    form button:hover { background:#45a049; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Contact SmartGroc</h1>
+</header>
+
+<main>
+    <h2>Get in Touch</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</main>
+
+<script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        alert("Thank you! Your message has been sent.");
+        form.reset();
+    });
+</script>
+
+</body>
+</html>

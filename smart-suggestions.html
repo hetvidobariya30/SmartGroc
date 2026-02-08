@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Suggestions - SmartGroc</title>
+<style>
+    body { font-family: Arial; background:#f7f7f7; margin:0; padding:0;}
+    header { background:#4CAF50; color:white; padding:20px; text-align:center;}
+    main { max-width:900px; margin:auto; padding:30px; background:white; margin-top:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    h2 { color:#4CAF50; text-align:center; margin-bottom:20px;}
+    ul { list-style-type: none; padding:0;}
+    li { background:#f0f0f0; margin:10px 0; padding:15px; border-radius:5px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Smart Suggestions</h1>
+</header>
+
+<main>
+    <h2>Recommended for You</h2>
+    <ul id="suggestionsList">
+        <!-- Suggestions will be dynamically added here -->
+    </ul>
+</main>
+
+<script>
+    // Example AI-based suggestions (static for demo purposes)
+    const suggestions = [
+        { item: "Milk", suggestion: "Buy from Store A for 10% off" },
+        { item: "Eggs", suggestion: "Consider organic eggs as a healthy substitute" },
+        { item: "Rice", suggestion: "Buy 5kg pack to save money" },
+        { item: "Tomatoes", suggestion: "Use fresh tomatoes before expiry for best taste" },
+        { item: "Yogurt", suggestion: "Store brand yogurt is cheaper and similar quality" }
+    ];
+
+    const list = document.getElementById('suggestionsList');
+    suggestions.forEach(s => {
+        const li = document.createElement('li');
+        li.textContent = `${s.item} → ${s.suggestion}`;
+        list.appendChild(li);
+    });
+</script>
+
+</body>
+</html>

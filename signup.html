@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<style>
+    body { font-family: Arial; background-color: #f2f2f2; display:flex; justify-content:center; align-items:center; height:100vh;}
+    .signup-container { background:#fff; padding:30px 40px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.2); width:350px;}
+    h2 { text-align:center; margin-bottom:20px; }
+    input[type="text"], input[type="email"], input[type="password"] { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+    .signup-container button { width:100%; padding:10px; background:#4CAF50; color:#fff; border:none; border-radius:5px; cursor:pointer; font-size:16px; }
+    .signup-container button:hover { background:#45a049; }
+    .login-link { text-align:center; margin-top:15px; }
+    .login-link a { text-decoration:none; color:#4CAF50; }
+    .login-link a:hover { text-decoration:underline; }
+    .error { color:red; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="signup-container">
+<h2>Sign Up</h2>
+<form id="signupForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+    <p class="error" id="errorMsg"></p>
+    <button type="submit">Sign Up</button>
+</form>
+<div class="login-link">
+    Already have an account? <a href="login.html">Login</a>
+</div>
+</div>
+
+<script>
+const form = document.getElementById('signupForm');
+const errorMsg = document.getElementById('errorMsg');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        errorMsg.textContent = "Passwords do not match!";
+        return;
+    }
+
+    // Simple password hashing using btoa (base64 encode)
+    const hashedPassword = btoa(password);
+
+    const user = { username, email, password: hashedPassword };
+    localStorage.setItem('user', JSON.stringify(user));
+    alert('Sign-up successful! You can now log in.');
+    window.location.href = "login.html";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile & Settings - SmartGroc</title>
+<style>
+    body { font-family: Arial; background:#f7f7f7; margin:0; padding:0; }
+    header { background:#4CAF50; color:white; padding:20px; text-align:center; }
+    main { max-width:600px; margin:auto; padding:30px; background:white; margin-top:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+    h2 { color:#4CAF50; text-align:center; margin-bottom:20px;}
+    label { display:block; margin-top:10px; }
+    input, select { width:100%; padding:10px; margin:5px 0 15px 0; border-radius:5px; border:1px solid #ccc; }
+    button { padding:10px 20px; background:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer; }
+    button:hover { background:#45a049; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Profile & Settings</h1>
+</header>
+
+<main>
+    <h2>Edit Your Profile</h2>
+    <form id="profileForm">
+        <label>Username</label>
+        <input type="text" id="username" required>
+        <label>Email</label>
+        <input type="email" id="email" required>
+        <label>Preferred Language</label>
+        <select id="language">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Spanish">Spanish</option>
+        </select>
+        <label>Theme</label>
+        <select id="theme">
+            <option value="Light">Light</option>
+            <option value="Dark">Dark</option>
+        </select>
+        <button type="submit">Save Changes</button>
+    </form>
+</main>
+
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const form = document.getElementById('profileForm');
+
+    if(user){
+        document.getElementById('username').value = user.username;
+        document.getElementById('email').value = user.email;
+    }
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        user.username = document.getElementById('username').value;
+        user.email = document.getElementById('email').value;
+        localStorage.setItem('user', JSON.stringify(user));
+        alert("Profile updated successfully!");
+    });
+</script>
+
+</body>
+</html>

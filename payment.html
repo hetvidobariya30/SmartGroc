@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - SmartGroc</title>
+</head>
+<body>
+<h2>Complete Payment</h2>
+<button id="payBtn">Pay $50</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+document.getElementById('payBtn').onclick = function() {
+    var options = {
+        "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Key ID
+        "amount": 5000, // Amount in smallest currency unit (₹50 = 5000 paise)
+        "currency": "INR",
+        "name": "SmartGroc",
+        "description": "Grocery Payment",
+        "handler": function (response){
+            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+        },
+        "prefill": {
+            "name": "John Doe",
+            "email": "john@example.com",
+            "contact": "9999999999"
+        },
+        "theme": {
+            "color": "#4CAF50"
+        }
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoomGrocery Store | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      width: 100vw;
+      
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: #F2F8F2;
+    }
+    header {
+      background: #4CAF50;
+      color: #333;
+      padding: 25px 20px 25px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    header h1 {
+      color: white;
+      font-size: 40px;
+      margin: 0;
+    }
+    header h1 span {
+      color: #FF9900;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      position: relative;
+      
+      transition: color 0.2s;
+    } 
+    nav ul li a.active {
+      color: white;
+      text-decoration: none;
+    }
+    nav ul li a:hover{
+        text-decoration: underline;
+    }
+    .dashboard-title {
+      text-align: center;
+      padding: 30px 0 10px;
+      color: #218a3b;
+      font-size: 28px;
+      margin: 0;
+    }
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding-bottom: 16px;
+    }
+    .category-buttons button {
+      background: #FFFFFF;
+      color: #219A3F;
+      border: 1.5px solid #B3EDBC;
+      border-radius: 8px;
+      padding: 7px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .category-buttons button.selected,
+    .category-buttons button:hover {
+      background: #B3EDBC;
+      color: #1b744a;
+      border-color: #219A3F;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 30px 80px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 17px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.17);
+    }
+    .product-card img {
+      width: 90%;
+      height: 140px;
+      margin: 16px auto 0;
+      display: block;
+      border-radius: 13px;
+      object-fit: cover;
+      background: #f4f4f2;
+    }
+    .product-info {
+      padding: 17px 12px 0 12px;
+    }
+    .product-info h3 {
+      margin: 7px 0 2px 0;
+      font-size: 18px;
+    }
+    .price {
+      color: #ff6600;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 5px 0 3px 0;
+    }
+    .desc {
+      font-size: 14px;
+      color: #555;
+      margin: 3px 0 14px 0;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 15px 16px 15px;
+      gap: 8px;
+    }
+    .btn {
+      padding: 8px 17px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 15px;
+    }
+    .btn-cart {
+      background: #ff9600;
+      color: white;
+    }
+    .btn-cart:hover {
+      background: #e07700;
+    }
+    .btn-view {
+      background: #25ba56;
+      color: white;
+    }
+    .btn-view:hover {
+      background: #1d8d41;
+    }
+    footer {
+      background: #333;
+      color: #4CAF50;
+      text-align: center;
+      padding: 13px;
+      font-size: 17px;
+      margin-top: 45px;
+    }
+    @media (max-width: 800px) {
+      .product-grid { padding: 28px 30px;}
+      header { padding: 20px 20px 10px 20px;}
+    }
+    @media (max-width: 500px) {
+      .dashboard-title { font-size: 20px;}
+      .product-grid { padding: 12px;}
+      header h1 { font-size: 22px; }
+      nav ul { gap: 6px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h1>SmartGroc</h1>
+    <nav>
+      <ul>
+       <li><a href="home.html" class="active">Home</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="cart.html" class="active">My Groceries</a></li>
+        <li><a href="shopping.html" class="active">Shopping</a></li>
+        <li><a href="suggestions.html" class="active">Smart Suggestions</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="login.html" class="active">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Dashboard Title -->
+  <h2 class="dashboard-title">Welcome to Your Dashboard</h2>
+
+  <!-- Category Buttons -->
+  <div class="category-buttons">
+    <button class="selected">All</button>
+    <button>Vegetables</button>
+    <button>Fruits</button>
+    <button>Dairy</button>
+    <button>Snacks</button>
+    <button>Beverages</button>
+    <button>Staples</button>
+  </div>
+
+  <!-- Product Cards -->
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/tomatoes.jpg" alt="Tomatoes">
+      <div class="product-info">
+        <h3>Fresh Tomatoes</h3>
+        <p class="price">₹60 per kg</p>
+        <p class="desc">Organic ripe tomatoes, perfect for salads and cooking.</p>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-cart">Add to Cart</button>
+        <button class="btn btn-view">View Details</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/apples.jpg" alt="Apples">
+      <div class="product-info">
+        <h3>Crisp Apples</h3>
+        <p class="price">₹120 per kg</p>
+        <p class="desc">Juicy red apples delivered fresh.</p>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-cart">Add to Cart</button>
+        <button class="btn btn-view">View Details</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/milk.jpg" alt="Milk">
+      <div class="product-info">
+        <h3>Fresh Milk</h3>
+        <p class="price">₹50 per litre</p>
+        <p class="desc">Pure cow's milk, farm fresh and nutritious.</p>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-cart">Add to Cart</button>
+        <button class="btn btn-view">View Details</button>
+      </div>
+    </div>
+    <!-- Add more product cards as needed -->
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    BoomGrocery Store © 2025 | Delivering Freshness at Your Doorstep!
+  </footer>
+</body>
+</html>

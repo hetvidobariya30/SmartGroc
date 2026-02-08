@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+    body { font-family: Arial; background:#f2f2f2; display:flex; justify-content:center; align-items:center; height:100vh;}
+    .login-container { background:#fff; padding:30px 40px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.2); width:350px;}
+    h2 { text-align:center; margin-bottom:20px; }
+    input[type="text"], input[type="password"] { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+    label { font-size:14px; }
+    .login-container button { width:100%; padding:10px; background:#4CAF50; color:#fff; border:none; border-radius:5px; cursor:pointer; font-size:16px; }
+    .login-container button:hover { background:#45a049; }
+    .signup-link { text-align:center; margin-top:15px; }
+    .signup-link a { text-decoration:none; color:#4CAF50; }
+    .signup-link a:hover { text-decoration:underline; }
+    .error { color:red; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="login-container">
+<h2>Login</h2>
+<form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <label><input type="checkbox" id="rememberMe"> Remember Me</label>
+    <p class="error" id="errorMsg"></p>
+    <button type="submit">Login</button>
+</form>
+<div class="signup-link">
+    Don't have an account? <a href="signup.html">Sign Up</a>
+</div>
+</div>
+
+<script>
+const form = document.getElementById('loginForm');
+const errorMsg = document.getElementById('errorMsg');
+
+window.addEventListener('load', () => {
+    // Auto-fill if "Remember Me" was checked
+    const rememberedUser = JSON.parse(localStorage.getItem('rememberedUser'));
+    if (rememberedUser) {
+        document.getElementById('username').value = rememberedUser.username;
+        document.getElementById('password').value = atob(rememberedUser.password);
+        document.getElementById('rememberMe').checked = true;
+    }
+});
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('rememberMe').checked;
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        errorMsg.textContent = "No account found. Please sign up first.";
+        return;
+    }
+
+    if (username === user.username && btoa(password) === user.password) {
+        // Remember Me feature
+        if (rememberMe) {
+            localStorage.setItem('rememberedUser', JSON.stringify(user));
+        } else {
+            localStorage.removeItem('rememberedUser');
+        }
+        window.location.href = "dashboard.html";
+    } else {
+        errorMsg.textContent = "Invalid username or password!";
+    }
+});
+</script>
+</body>
+</html>
